@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  hello:
+    build:
+        context: hello
+        dockerfile: Dockerfile
+    volumes:
+      - ./hello:/usr/src/app
+    ports:
+      - 9000:8080
+    networks:
+      - backend
+    
+  hello2:
+    build:
+        context: hello2
+        dockerfile: Dockerfile
+    volumes:
+      - ./hello2:/usr/src/app
+    ports:
+      - 9001:8080
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
